@@ -109,4 +109,12 @@ In order for exLink to determine which links are external and which are internal
 
 ```
 
+If you are loading content via AJAX or will be adding any content after exLink has been initialized, you'll need to reinitialize the plugin. If you specify the string 're' as your options, then the options will not be affected and all external links/documents will be redetected to account for your new additions. 
+
+```javascript
+
+	$.fn.exLink('re');
+
+```
+
 If you have any trouble with the plugin, shoot me a tweet @YupItsZac and I'd be happy to help! 

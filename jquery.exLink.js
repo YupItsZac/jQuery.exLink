@@ -22,7 +22,10 @@
     		
     	}
 
-    	jQuery.options = $.extend({}, defaults, options);	
+
+        if(options != 're') {
+    	   jQuery.options = $.extend({}, defaults, options);
+        }	
 
     	var self = this;
 
