@@ -1,3 +1,10 @@
+// jQuery.exLink 
+// Author: YupItsZac
+// Github: https://github.com/YupItsZac/jQuery.exLink
+// Web: http://www.yupitszac.com
+// Support: @YupItsZac - Twitter, or fb.me/yupitszac
+
+
 
 (function( $ ) {
 
@@ -44,11 +51,11 @@
     	var self = this;
 
     	jQuery.each(jQuery.options.protocols, function(key, value) {
-			$('a[href^="'+value+'://"]').attr('class',"exLink");
+			$('a[href^="'+value+'://"]').addClass("exLink");
     	});
 
     	jQuery.each(jQuery.options.filetypes, function(key, value) {
-    		$('a[href$="'+value+'"]').attr('class', 'docuLink');
+    		$('a[href$="'+value+'"]').addClass('docuLink');
     	});
     },
 
