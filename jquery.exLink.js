@@ -65,13 +65,13 @@
 			if(jQuery.options.linkWarning) {
 				showLinkWarning(obj.target.href);
 			} else {
-				window.open(obj.target.href, '_blank');
+				window.open(obj.target.closest('a').href, '_blank');
 			}
 		} else {
 			if(jQuery.options.fileWarning) {
 				showDocWarning(obj.target.href);
 			} else {
-				window.open(obj.target.href, '_blank');
+				window.open(obj.target.closest('a').href, '_blank');
 			}
 		}
 	},

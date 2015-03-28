@@ -1,0 +1,45 @@
+{
+  "name": "exLink",
+  "version": "1.0.2",
+  "title": "jQuery exLink",
+  "description": "jQuery.exLink forces all external links (specified by protocol) and documents (specified by format) to open in a new tab. jQuery.exLink also suports a viausal notification that users are navigating to an external site, or opening a document. This plugin is easy to use, lightweight and completely configurable.",
+  "keywords": [
+    "jquery",
+    "external",
+    "links",
+    "tab",
+    "open",
+    "documents",
+    "formats",
+    "yupitszac",
+    "exLink",
+    "warning",
+    "modal"
+  ],
+  "homepage": "https://github.com/YupItsZac/jQuery.exLink",
+  "author": {
+    "name": "Zac Brown",
+    "url": "http://yupitszac.com"
+  },
+  "maintainers": [
+    {
+      "name": "Zac Brown",
+      "url": "https://yupitszac.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YupItsZac/jQuery.exLink"
+  },
+  "bugs": "https://github.com/YupItsZac/jQuery.exLink",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "jquery.exLink.js",
+  "dependencies": {
+    "jquery": "1.4"
+  }
+}
