@@ -1,3 +1,6 @@
+/* Used for the modal display */
+/* Not needed if fileWarning and linkWarning are set to false */
+
 .modalBG {
 	position: absolute;
 	width: 100%;

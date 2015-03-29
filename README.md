@@ -30,6 +30,13 @@ exLink is incredibly light weight, and very easy to setup. This plugin will func
 
 ```
 
+Alternatively, you can simply use npm for the install.
+
+```javascript
+
+sudo npm install exlink
+
+```
 
 2). After the required files have been included in your document, usage is incredibly easy! For the default case, just initiate the exLink plugin. This uses all of the default options. 
 
