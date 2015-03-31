@@ -34,15 +34,17 @@
            jQuery.options = $.extend({}, defaults, options);
         }   
 
-        var self = this;
-
-        targetLinks();
+        $('.exLink, docuLink').off('click');
 
         $( ".exLink, .docuLink" ).click(function( event ) {
             event.preventDefault();
 
             catchClick(event);
         });
+
+        var self = this;
+
+        targetLinks();
  
     },
 
@@ -60,13 +62,6 @@
     },
 
     catchClick = function(obj) {
-
-        if(window.obj == obj.target) {
-            //do nothing. this event has already been fired
-
-        } else {
-
-            window.obj = obj.target;
         
             if($(obj.target).is('.exLink')) {
                 if(jQuery.options.linkWarning) {
@@ -92,7 +87,7 @@
                     window.open(href, '_blank');
                 }
             }
-        }
+     
     },
 
     showLinkWarning = function(href) {
