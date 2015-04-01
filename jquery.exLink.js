@@ -32,15 +32,19 @@
 
         if(options != 're') {
            jQuery.options = $.extend({}, defaults, options);
+
+           $('body').on('click','.exLink',function(event){
+                event.preventDefault();
+                
+                catchClick(event); 
+            });
+
+           $('body').on('click', '.docuLink', function(event) {
+                event.preventDefault();
+
+                catchClick(event);
+           });
         }   
-
-        $('.exLink, docuLink').off('click');
-
-        $( ".exLink, .docuLink" ).click(function( event ) {
-            event.preventDefault();
-
-            catchClick(event);
-        });
 
         var self = this;
 
@@ -78,12 +82,12 @@
                 if(jQuery.options.fileWarning) {
                     showDocWarning(obj.target.href);
                 } else {
+                    console.log('docuLink, no warning');
                     if($(obj.target).is('a')) {
                         var href = obj.target.href;
                     } else {
                         var href = obj.target.closest('a').href;
                     }
-
                     window.open(href, '_blank');
                 }
             }
