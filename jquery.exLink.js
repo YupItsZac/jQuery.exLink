@@ -33,17 +33,15 @@
         if(options != 're') {
            jQuery.options = $.extend({}, defaults, options);
 
-           $('body').on('click','.exLink',function(event){
+           $('body').on('click','.exLink, .docuLink',function(event){
                 event.preventDefault();
-                
-                catchClick(event); 
+
+                if(event.handled != true) {
+                    catchClick(event);
+                }
+
+                event.handled = true;
             });
-
-           $('body').on('click', '.docuLink', function(event) {
-                event.preventDefault();
-
-                catchClick(event);
-           });
         }   
 
         var self = this;
@@ -57,40 +55,42 @@
         var self = this;
 
         jQuery.each(jQuery.options.protocols, function(key, value) {
-            $('a[href^="'+value+'://"]').addClass("exLink");
+            $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink");
         });
 
         jQuery.each(jQuery.options.filetypes, function(key, value) {
-            $('a[href$="'+value+'"]').addClass('docuLink');
+            $('a[href$="'+value+'"]').not('.exLink').addClass('docuLink');
         });
     },
 
     catchClick = function(obj) {
-        
-            if($(obj.target).is('.exLink')) {
-                if(jQuery.options.linkWarning) {
-                    showLinkWarning(obj.target.href);
-                } else {
-                    if($(obj.target).is('a')) {
-                        var href = obj.target.href;
-                    } else {
-                        var href = obj.target.closest('a').href;
-                    }
-                    window.open(href, '_blank');
-                }
+
+        if($(obj.target).is('.exLink')) {
+            if(jQuery.options.linkWarning) {
+                showLinkWarning(obj.target.href);
             } else {
-                if(jQuery.options.fileWarning) {
-                    showDocWarning(obj.target.href);
+                if($(obj.target).is('a')) {
+                    var href = obj.target.href;
                 } else {
-                    console.log('docuLink, no warning');
-                    if($(obj.target).is('a')) {
-                        var href = obj.target.href;
-                    } else {
-                        var href = obj.target.closest('a').href;
-                    }
-                    window.open(href, '_blank');
+                    var href = obj.target.closest('a').href;
                 }
+
+                window.open(href, '_blank');
             }
+        } else {
+            if(jQuery.options.fileWarning) {
+                showDocWarning(obj.target.href);
+            } else {
+                if($(obj.target).is('a')) {
+                    var href = obj.target.href;
+                } else {
+                    var href = obj.target.closest('a').href;
+                }
+                window.open(href, '_blank');
+            }
+        }
+   
+        window.lastObj = obj;
      
     },
 
