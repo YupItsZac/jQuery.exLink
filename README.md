@@ -54,6 +54,7 @@ $.fn.exLink({
  	protocols: ['http', 'https'],
 	filetypes: ['pdf', 'xls', 'docx', 'doc', 'ppt', 'pptx'],
 	linkWarning: true,
+	hostCompare: false,
 	linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
 	fileWarning: true,
 	fileWarningBody: 'You are about to open the file below. Do you wish to continue?',
