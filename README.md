@@ -30,7 +30,7 @@ exLink is incredibly light weight, and very easy to setup. This plugin will func
 
 ```
 
-Alternatively, you can simply use npm for the install.
+To download using npm, just run this command from your project directory:
 
 ```javascript
 
@@ -81,6 +81,8 @@ Options
 **linkWarning** - Display a warning notifying the user that they are navigating to an external link. By default, this is enabled. Ex: linkWarning: true
 
 **fileWarning** - Similar to linkWarning, this notifies the user that they are opening a document and asks for confirmation ot proceed. By default, this is also enabled. Ex: fileWarning: true
+
+**hostCompare** - New in version 1.2.0, set this as true to identify external links based on a hostname comparison. If false, which is the default case, exLink will identify the external links based on protocol information. By default, this is disabled. Ex: hostCompare: true
  
 
 ######Visual Options
@@ -108,7 +110,7 @@ Options
 Notes & Hints
 ===
 
-In order for exLink to determine which links are external and which are internal without parsing the domain for every link on the page, use relative paths for all of your internal links. 
+1). In order for exLink to determine which links are external and which are internal using the protocol detection option, use relative paths for all of your internal links. Otherwise, all of your internal links will also be detected as external. 
 
 ```html
 
@@ -116,7 +118,17 @@ In order for exLink to determine which links are external and which are internal
 
 ```
 
-If you are loading content via AJAX or will be adding any content after exLink has been initialized, you'll need to reinitialize the plugin. If you specify the string 're' as your options, then the options will not be affected and all external links/documents will be redetected to account for your new additions. 
+2). If you decide to use the hostname detection over the protocol detection, you will need to ensure you use absolute urls for all of your internal links. Otherwise, your internal links will be detected as external since the hostname comparison will return false. 
+
+```html
+
+	<a href="http://www.external.link">External Link</a>
+
+	<a href="http://www.internal.link">Internal Link</a>
+
+```
+
+3). If you are loading content via AJAX or will be adding any content after exLink has been initialized, you'll need to reinitialize the plugin. If you specify the string 're' as your options, then the options will not be affected and all external links/documents will be redetected to account for your new additions. 
 
 ```javascript
 
@@ -124,4 +136,13 @@ If you are loading content via AJAX or will be adding any content after exLink h
 
 ```
 
-If you have any trouble with the plugin, shoot me a tweet @YupItsZac and I'd be happy to help! 
+4). If you want to target a single internal link as well, simply add the appropriate class to the link in your content. 
+
+```html
+
+   <a href="#" class="exLink">Linky Link</a>
+
+```
+
+
+If you do use the plugin, I ask that you head over to Twitter or Github and let me know you. Im curious to see how people implement and what they use it for. If you have any trouble with the plugin, shoot me a tweet @YupItsZac and I'd be happy to help! 
