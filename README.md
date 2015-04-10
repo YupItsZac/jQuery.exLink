@@ -65,7 +65,8 @@ $.fn.exLink({
 	dialogCancelButton: 'Cancel',
 	dialogConfirmButton: 'Continue',
 	modalWidth: "320px",
-	modalHeight: "240px"
+	modalHeight: "240px",
+	modalDisplayBG: true
 });
 
 ```
@@ -107,6 +108,8 @@ Options
 **modalWidth** - The width of the warning box. This is a string. Ex: modalWidth: "500px"
 
 **modalHeight** - The height of the warning box. This is a string. Ex: modalHeight: "200px"
+
+**modalDisplayBG** - New in version 1.2.3, if set to true, this will display the dark background over the page when the modal is present. This is a boolean set to true by default. Ex: modalDisplayBG: true
 
 Notes & Hints
 ===
