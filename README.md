@@ -56,6 +56,7 @@ $.fn.exLink({
 	linkWarning: true,
 	hostCompare: false,
 	noFollow: false,
+	fancyBoxIgnore: true,
 	linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
 	fileWarning: true,
 	fileWarningBody: 'You are about to open the file below. Do you wish to continue?',
@@ -88,6 +89,8 @@ Options
 **hostCompare** - New in version 1.2.0, set this as true to identify external links based on a hostname comparison. If false, which is the default case, exLink will identify the external links based on protocol information. By default, this is disabled. Ex: hostCompare: true
  
 **noFollow** - New in version 1.2.5, set this to true to prevent search engines from following the identified external URLs. If false, search engines will recurse as expected thorugh the external links. By default, this is false. Ex: noFollow: false
+
+**fancyBoxIgnore** - New in version 1.2.6, this enables pages to still use the popular Fancy Box plugin to open content in modal dialogs without opening in a new tab as well. Set this to true if you use the fancyBox plugin, and to false if you do not. Set to true by default. Ex: fancyBoxIgnore: true
 
 ######Visual Options
 

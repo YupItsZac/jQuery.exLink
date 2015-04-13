@@ -3,7 +3,7 @@
 // Github: https://github.com/YupItsZac/jQuery.exLink
 // Web: http://www.yupitszac.com
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 1.2.5 April 10, 2015
+// Version 1.2.6 April 10, 2015
 
 
 
@@ -17,6 +17,7 @@
             filetypes: ['pdf', 'xls', 'docx', 'doc', 'ppt', 'pptx'],
             hostCompare: false,
             noFollow: false,
+            fancyBoxIgnore: true,
             linkWarning: true,
             linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
             fileWarning: true,
@@ -64,9 +65,17 @@
 
         jQuery.each(jQuery.options.protocols, function(key, value) {
             if(jQuery.options.noFollow) {
-                $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink").attr('rel', 'nofollow');
+                if(jQuery.options.fancyBoxIgnore) {
+                    $('a[href^="'+value+'://"]').not('.docuLink, .iframe').addClass("exLink").attr('rel', 'nofollow');
+                } else {
+                    $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink").attr('rel', 'nofollow');
+                }
             } else {
-                $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink");
+                if(jQuery.options.fancyBoxIgnore) {
+                    $('a[href^="'+value+'://"]').not('.docuLink, .iframe').addClass("exLink");
+                } else {
+                    $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink");
+                }
             }
         });
 
@@ -86,9 +95,17 @@
 
             if(hostname.test($(this).attr('href')) === false) {
                 if(jQuery.options.noFollow) {
-                    $(this).not('.docuLink').addClass('exLink').attr('rel', 'nofollow');
+                    if(jQuery.options.fancyBoxignore) {
+                        $(this).not('.docuLink, .iframe').addClass('exLink').attr('rel', 'nofollow');
+                    } else {
+                        $(this).not('.docuLink').addClass('exLink').attr('rel', 'nofollow');
+                    }
                 } else {
-                    $(this).not('.docuLink').addClass('exLink');
+                    if(jQuery.options.fancyBoxIgnore) {
+                        $(this).not('.docuLink, .iframe').addClass('exLink');
+                    } else {
+                        $(this).not('.docuLink').addClass('exLink');
+                    }
                 }
             }
         });
