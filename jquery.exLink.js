@@ -3,7 +3,7 @@
 // Github: https://github.com/YupItsZac/jQuery.exLink
 // Web: http://www.yupitszac.com
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 1.2.3 April 10, 2015
+// Version 1.2.5 April 10, 2015
 
 
 
@@ -16,6 +16,7 @@
             protocols: ['http', 'https'],
             filetypes: ['pdf', 'xls', 'docx', 'doc', 'ppt', 'pptx'],
             hostCompare: false,
+            noFollow: false,
             linkWarning: true,
             linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
             fileWarning: true,
@@ -62,7 +63,11 @@
         var self = this;
 
         jQuery.each(jQuery.options.protocols, function(key, value) {
-            $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink");
+            if(jQuery.options.noFollow) {
+                $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink").attr('rel', 'nofollow');
+            } else {
+                $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink");
+            }
         });
 
         identifyDocuments();
@@ -80,7 +85,11 @@
         $('a').each(function() {
 
             if(hostname.test($(this).attr('href')) === false) {
+                if(jQuery.options.noFollow) {
+                    $(this).not('.docuLink').addClass('exLink').attr('rel', 'nofollow');
+                } else {
                     $(this).not('.docuLink').addClass('exLink');
+                }
             }
         });
     },

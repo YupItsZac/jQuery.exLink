@@ -55,6 +55,7 @@ $.fn.exLink({
 	filetypes: ['pdf', 'xls', 'docx', 'doc', 'ppt', 'pptx'],
 	linkWarning: true,
 	hostCompare: false,
+	noFollow: false,
 	linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
 	fileWarning: true,
 	fileWarningBody: 'You are about to open the file below. Do you wish to continue?',
@@ -86,6 +87,7 @@ Options
 
 **hostCompare** - New in version 1.2.0, set this as true to identify external links based on a hostname comparison. If false, which is the default case, exLink will identify the external links based on protocol information. By default, this is disabled. Ex: hostCompare: true
  
+**noFollow** - New in version 1.2.5, set this to true to prevent search engines from following the identified external URLs. If false, search engines will recurse as expected thorugh the external links. By default, this is false. Ex: noFollow: false
 
 ######Visual Options
 
@@ -148,5 +150,14 @@ Notes & Hints
 
 ```
 
+5). The introduction of the noFollow option is geared towards sites that aren't heavily reliant upon SEO. It is not reccommended you use this option unless the external websites you're linking to do not provide any value for your content (this is very rare). 
 
-If you do use the plugin, I ask that you head over to Twitter or Github and let me know you. Im curious to see how people implement and what they use it for. If you have any trouble with the plugin, shoot me a tweet @YupItsZac and I'd be happy to help! 
+
+Help & Support
+===
+
+This plugin doesn't come with any specific support plan, but I absolutely love helping out where I can. If you encounter any trouble with it at all, please don't hesitate ot let me know. Just head on over to http://fb.me/yupitszac and let me know. Youc an also just open an issue on Github at https://github.com/YupItsZac/jQuery.exLink
+
+If you use jQuery.exLink on your website, let me know! I'd like to see what you did with it and I'll share your link! Post your address to http://fb.me/yupitszac and I'll check it out. 
+
+Also, I'd love to know what additional features you might want in a plugin like this. Let me know! http://fb.me/yupitszac
