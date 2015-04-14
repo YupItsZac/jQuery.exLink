@@ -7,6 +7,9 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
+**Current Version:** 1.2.7
+**Release Date:** April 14, 2015
+
 
 Usage
 ===
@@ -57,6 +60,8 @@ $.fn.exLink({
 	hostCompare: false,
 	noFollow: false,
 	fancyBoxIgnore: true,
+	linkCallback: null,
+    fileCallback: null,
 	linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
 	fileWarning: true,
 	fileWarningBody: 'You are about to open the file below. Do you wish to continue?',
@@ -68,7 +73,9 @@ $.fn.exLink({
 	dialogConfirmButton: 'Continue',
 	modalWidth: "320px",
 	modalHeight: "240px",
-	modalDisplayBG: true
+	modalDisplayBG: true,
+	externalColor: '',
+    documentColor: ''
 });
 
 ```
@@ -91,6 +98,10 @@ Options
 **noFollow** - New in version 1.2.5, set this to true to prevent search engines from following the identified external URLs. If false, search engines will recurse as expected thorugh the external links. By default, this is false. Ex: noFollow: false
 
 **fancyBoxIgnore** - New in version 1.2.6, this enables pages to still use the popular Fancy Box plugin to open content in modal dialogs without opening in a new tab as well. Set this to true if you use the fancyBox plugin, and to false if you do not. Set to true by default. Ex: fancyBoxIgnore: true
+
+**linkCallback** - Added in version 1.2.7, this enables developers to execute a function each time an external link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. Ex: linkCallback: callback
+
+**fileCallback** - New in version 1.2.7, this enables developers to execute a function each time a document link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. Ex: fileCallback: docCallback
 
 ######Visual Options
 
@@ -115,6 +126,10 @@ Options
 **modalHeight** - The height of the warning box. This is a string. Ex: modalHeight: "200px"
 
 **modalDisplayBG** - New in version 1.2.3, if set to true, this will display the dark background over the page when the modal is present. This is a boolean set to true by default. Ex: modalDisplayBG: true
+
+**externalColor** - New in version 1.2.7, this option lets you change the color of all external links identified. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
+
+**documentColor** - New in version 1.2.7, this option lets you change the color of all document links identified. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
 
 Notes & Hints
 ===
@@ -153,7 +168,18 @@ Notes & Hints
 
 ```
 
-5). The introduction of the noFollow option is geared towards sites that aren't heavily reliant upon SEO. It is not reccommended you use this option unless the external websites you're linking to do not provide any value for your content (this is very rare). 
+5). The introduction of the noFollow option is geared towards sites that aren't heavily reliant upon SEO. It is not reccommended you use this option unless the external websites you're linking to do not provide any value for your content (this is very rare).
+
+6). If you choose to use the linkCallback or fileCallback options, your callback function may look something like this:
+
+```javascript
+
+  //obj is the object that was clicked. warning is true if a warning dialog was displayed, false if not.
+  function callback(obj, warning)  {
+  	console.log('The object clicked: '+obj);
+  	console.log('Warning displayed: '+warning);
+  }
+```
 
 
 Help & Support

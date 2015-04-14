@@ -3,7 +3,7 @@
 // Github: https://github.com/YupItsZac/jQuery.exLink
 // Web: http://www.yupitszac.com
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 1.2.6 April 10, 2015
+// Version 1.2.7 April 14, 2015
 
 
 
@@ -18,6 +18,8 @@
             hostCompare: false,
             noFollow: false,
             fancyBoxIgnore: true,
+            linkCallback: null,
+            fileCallback: null,
             linkWarning: true,
             linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
             fileWarning: true,
@@ -30,8 +32,9 @@
             dialogConfirmButton: 'Continue',
             modalDisplayBG: true,
             modalWidth: "320px",
-            modalHeight: "240px"
-            
+            modalHeight: "240px",
+            externalColor: '',
+            documentColor: ''
         }
 
 
@@ -56,6 +59,9 @@
         } else {
             targetByProtocol();
         }
+
+        $('.exLink').css('color', jQuery.options.externalColor);
+        $('.docuLink').css('color', jQuery.options.documentColor);
  
     },
 
@@ -114,7 +120,7 @@
     identifyDocuments = function() {
 
         jQuery.each(jQuery.options.filetypes, function(key, value) {
-            $('a[href$="'+value+'"]').not('.exLink').addClass('docuLink');
+            $('a[href$="'+value+'"]').not('.exLink').addClass('docuLink').css('color', jQuery.options.documentColor);
         });
     },
 
@@ -130,6 +136,9 @@
                 }
 
                 showLinkWarning(href);
+                if ($.isFunction(jQuery.options.linkCallback)) {
+                    jQuery.options.linkCallback(obj, true);
+                }
             } else {
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
@@ -138,6 +147,10 @@
                 }
 
                 window.open(href, '_blank');
+                if ($.isFunction(jQuery.options.linkCallback)) {
+                    jQuery.options.linkCallback(obj, false);
+                }
+                
             }
         } else {
             if(jQuery.options.fileWarning) {
@@ -149,6 +162,11 @@
                 }
 
                 showDocWarning(href);
+                
+                if($.isFunction(jQuery.options.fileCallback)) {
+                    jQuery.options.fileCallback(obj, true);
+                }
+
             } else {
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
@@ -156,6 +174,10 @@
                     var href = obj.target.closest('a').href;
                 }
                 window.open(href, '_blank');
+
+                if($.isFunction(jQuery.options.fileCallback)) {
+                    jQuery.options.fileCallback(obj, false);
+                }
             }
         }
    
