@@ -3,7 +3,7 @@
 // Github: https://github.com/YupItsZac/jQuery.exLink
 // Web: http://www.yupitszac.com
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 1.2.7 April 14, 2015
+// Version 1.2.8 April 16, 2015
 
 
 
@@ -34,7 +34,8 @@
             modalWidth: "320px",
             modalHeight: "240px",
             externalColor: '',
-            documentColor: ''
+            documentColor: '',
+            clickedColor: ''
         }
 
 
@@ -181,6 +182,10 @@
             }
         }
    
+        if(jQuery.options.clickedColor) {
+            $(obj.target).css('color', jQuery.options.clickedColor);
+        }
+
         window.lastObj = obj;
      
     },

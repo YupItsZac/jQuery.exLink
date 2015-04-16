@@ -8,6 +8,7 @@ This plugin is distributed as is, and does not include any official support. How
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
 **Current Version:** 1.2.7
+
 **Release Date:** April 14, 2015
 
 
@@ -75,7 +76,8 @@ $.fn.exLink({
 	modalHeight: "240px",
 	modalDisplayBG: true,
 	externalColor: '',
-    documentColor: ''
+    documentColor: '',
+    clickedColor: ''
 });
 
 ```
@@ -130,6 +132,8 @@ Options
 **externalColor** - New in version 1.2.7, this option lets you change the color of all external links identified. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
 
 **documentColor** - New in version 1.2.7, this option lets you change the color of all document links identified. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
+
+**clickedColor** - New in version 1.2.8, this option lets you change the color of all external and document links that have been clicked. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
 
 Notes & Hints
 ===
