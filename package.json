@@ -1,6 +1,6 @@
 {
   "name": "exlink",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "jQuery.exLink forces all external links (specified by protocol) and documents (specified by format) to open in a new tab. jQuery.exLink also suports a viausal notification that users are navigating to an external site, or opening a document.",
   "main": "jquery.exLink.js",
   "repository": {

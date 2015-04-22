@@ -3,7 +3,7 @@
 // Github: https://github.com/YupItsZac/jQuery.exLink
 // Web: http://www.yupitszac.com
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 1.2.8 April 16, 2015
+// Version 2.0.1 April 22, 2015
 
 
 
@@ -133,7 +133,7 @@
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
                 } else {
-                    var href = obj.target.closest('a').href;
+                    var href = $(obj.target).closest('a').attr('href');
                 }
 
                 showLinkWarning(href);
@@ -144,7 +144,7 @@
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
                 } else {
-                    var href = obj.target.closest('a').href;
+                    var href = $(obj.target).closest('a').attr('href');
                 }
 
                 window.open(href, '_blank');
@@ -159,7 +159,7 @@
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
                 } else {
-                    var href = obj.target.closest('a').href;
+                    var href = $(obj.target).closest('a').attr('href');
                 }
 
                 showDocWarning(href);
@@ -172,7 +172,7 @@
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
                 } else {
-                    var href = obj.target.closest('a').href;
+                    var href = $(obj.target).closest('a').attr('href');
                 }
                 window.open(href, '_blank');
 

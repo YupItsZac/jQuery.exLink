@@ -7,7 +7,7 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
-**Current Version:** 2.0.0
+**Current Version:** 2.0.1
 
 **Release Date:** April 22, 2015
 
