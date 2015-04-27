@@ -2,8 +2,9 @@
 // Author: YupItsZac
 // Github: https://github.com/YupItsZac/jQuery.exLink
 // Web: http://www.yupitszac.com
+// Demo: http://www.yupitszac.com/demo/jquery-exlink
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 2.0.1 April 22, 2015
+// Version 2.0.2 April 27, 2015
 
 
 
@@ -20,6 +21,9 @@
             fancyBoxIgnore: true,
             linkCallback: null,
             fileCallback: null,
+            gaTracking: false,
+            gaTrackLabel: 'External Links',
+            gaTrackOld: false,
             linkWarning: true,
             linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
             fileWarning: true,
@@ -234,6 +238,17 @@
     };
 
     $.fn.exLink.navigateLocation = function(href) {
+
+        if(jQuery.options.gaTracking) {
+
+            var hname = window.location.hostname;
+
+            if(jQuery.options.gaTrackOld) {
+                var track = _gaq.push(['_trackEvent', jQuery.options.gaTrackLabel, hname, href]);
+            } else {
+                ga('send', 'event', jQuery.options.gaTrackLabel, hname, href);
+            }
+        }
 
         window.open(href, '_blank');
 
