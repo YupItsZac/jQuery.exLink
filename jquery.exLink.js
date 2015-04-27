@@ -4,7 +4,7 @@
 // Web: http://www.yupitszac.com
 // Demo: http://www.yupitszac.com/demo/jquery-exlink
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 2.0.2 April 27, 2015
+// Version 2.0.3 April 27, 2015
 
 
 

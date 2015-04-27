@@ -7,7 +7,7 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
-**Current Version:** 2.0.2
+**Current Version:** 2.0.3
 
 **Release Date:** April 27, 2015
 
@@ -149,17 +149,17 @@ exLink Demo & Other Stuffs
 
 jQuery.exLink has had more downloads than I expected, which is pretty cool! Almost 800 right now. I've put together a basic demo (which I probably should've done from the beginning) and published it on my website. Also, exLink has been featured or shared to some other websites, and I feel like I should say thanks.
 
-- [jQuery.exLink Demo](www.yupitszac.com/demo/jquery-exlink)
-- [exLink on npm](www.npmjs.com/package/exlink)
-- [exLink on jQuer.in](www.jquer.in/helpful-jquery-plugins-for-html5-websites/exlink/)
-- [exLink on Github](www.github.com/YupItsZac/jQuery.exLink) / Just in case you aren't reading this on Github
+- [jQuery.exLink Demo](http://www.yupitszac.com/demo/jquery-exlink)
+- [exLink on npm](http://www.npmjs.com/package/exlink)
+- [exLink on jQuer.in](http://www.jquer.in/helpful-jquery-plugins-for-html5-websites/exlink/)
+- [exLink on Github](http://www.github.com/YupItsZac/jQuery.exLink) / Just in case you aren't reading this on Github
 
 Also, if you find this plugin useful (or even if you don't), please connect with me!
 
-- [Github](www.github.com/YupItsZac)
-- [Twitter](www.twitter.com/YupItsZac)
-- [LinkedIn](www.linkedin.com/in/yupitszac)
-- [Facebook](www.fb.me/yupitszac)
+- [Github](http://www.github.com/YupItsZac)
+- [Twitter](http://www.twitter.com/YupItsZac)
+- [LinkedIn](http://www.linkedin.com/in/yupitszac)
+- [Facebook](http://www.fb.me/yupitszac)
 
 
 Notes & Hints
