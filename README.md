@@ -7,9 +7,9 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
-**Current Version:** 2.0.3
+**Current Version:** 2.1.0
 
-**Release Date:** April 27, 2015
+**Release Date:** June 30, 2015
 
 
 Usage
@@ -42,7 +42,15 @@ sudo npm install exlink
 
 ```
 
-2). After the required files have been included in your document, usage is incredibly easy! For the default case, just initiate the exLink plugin. This uses all of the default options. 
+2). After the required files have been included in your document, usage is incredibly easy! For the default case, just initiate the exLink plugin. This uses all of the default options.
+
+```javascript
+
+exLink();
+
+```
+
+In versions prior to 2.1.0, initaite exLink with the '$.fn.' declaration.
 
 ```javascript
 
@@ -80,7 +88,11 @@ $.fn.exLink({
 	modalDisplayBG: true,
 	externalColor: '',
     documentColor: '',
-    clickedColor: ''
+    clickedColor: '',
+    newWindow: false,
+    widthWindow: '500',
+    heightWindow: '400',
+    titleWindow: 'exLink by YupItsZac.com'
 });
 
 ```
@@ -110,9 +122,17 @@ Options
 
 **gaTracking** - Introduced in version 2.0.2, this option enables a Google Analytics event to trigger when any of the links are clicked. Classic and Universeral analytics supported. This is a boolean value set to false by default. Ex: gaTracking: false
 
-**gaTrackLabel** - If you you enable gaTracking, set this to ustomize the event label. This is a string value set to 'External Links' by default. Ex: gaTrackLabel: 'External Links'
+**gaTrackLabel** - If you you enable gaTracking, set this to customize the event label. This is a string value set to 'External Links' by default. Ex: gaTrackLabel: 'External Links'
 
 **gaTrackOld** - Set this to true if you are using the classic version of Google Analytcis (ga.js). If you are using the new universal tracking (analytics.js), you don't need to use this option. This is a boolean value set to false by default. Ex: gaTrackOld: false
+
+**newWindow** - New in version 2.1.0, when set to true, exLink forces all external links and documents to open in a new window, not the default 'tab' behavior. Ex: newWindow: true
+
+**widthWindow** - The width of the new window specified via the newWindow option. String value. Ex: widthWindow: '500'
+
+**heightWindow** - The height of the window specified via the newWindow option. String value. Ex: heightWindow: '400'
+
+*titleWindow** - The title of the window specified via the newWindow option. String value. Ex: titleWindow: 'My Window Title'
 
 ######Visual Options
 
@@ -191,7 +211,7 @@ Notes & Hints
 
 ```
 
-4). If you want to target a single internal link as well, simply add the appropriate class to the link in your content. 
+4). Prior to version 2.1.0, if you want to target a single internal link as well, simply add the appropriate class to the link in your content. 
 
 ```html
 

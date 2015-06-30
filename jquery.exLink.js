@@ -4,14 +4,14 @@
 // Web: http://www.yupitszac.com
 // Demo: http://www.yupitszac.com/demo/jquery-exlink
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 2.0.3 April 27, 2015
+// Version 2.1.0 June 30, 2015
 
 
 
-(function( $ ) {
+var exLink = (function() {
 
 
-    $.fn.exLink = function(options) {
+    initialize = function(options) {
 
         var defaults = {
             protocols: ['http', 'https'],
@@ -39,7 +39,11 @@
             modalHeight: "240px",
             externalColor: '',
             documentColor: '',
-            clickedColor: ''
+            clickedColor: '',
+            newWindow: false,
+            widthWindow: "500",
+            heightWindow: "400;",
+            titleWindow: 'exLink by YupItsZac.com'
         }
 
 
@@ -68,7 +72,7 @@
         $('.exLink').css('color', jQuery.options.externalColor);
         $('.docuLink').css('color', jQuery.options.documentColor);
  
-    },
+    };
 
     targetByProtocol = function() {
 
@@ -91,7 +95,7 @@
         });
 
         identifyDocuments();
-    },
+    };
 
     targetByHost = function() {
 
@@ -120,14 +124,14 @@
                 }
             }
         });
-    },
+    };
 
     identifyDocuments = function() {
 
         jQuery.each(jQuery.options.filetypes, function(key, value) {
             $('a[href$="'+value+'"]').not('.exLink').addClass('docuLink').css('color', jQuery.options.documentColor);
         });
-    },
+    };
 
     catchClick = function(obj) {
 
@@ -192,7 +196,7 @@
 
         window.lastObj = obj;
      
-    },
+    };
 
     showLinkWarning = function(href) {
 
@@ -201,7 +205,7 @@
             $('.modalBG').fadeIn("slow");
         }
 
-        $('body').append('<div class="modal-dialog">'+jQuery.options.linkWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="$.fn.exLink.closeModal();">'+jQuery.options.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="$.fn.exLink.navigateLocation(&quot;'+href+'&quot;);">'+jQuery.options.dialogConfirmButton+'</div></div>');
+        $('body').append('<div class="modal-dialog">'+jQuery.options.linkWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="exLink.closeModal();">'+jQuery.options.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="exLink.navigate(&quot;'+href+'&quot;);">'+jQuery.options.dialogConfirmButton+'</div></div>');
         $('.modal-dialog').fadeIn("slow");
 
         $('.exLinkCancel').css("background-color",jQuery.options.dialogCancel);
@@ -211,7 +215,7 @@
 
         $('.modal-dialog').css('width', jQuery.options.modalWidth);
         $('.modal-dialog').css('height', jQuery.options.modalHeight);
-    },
+    };
 
     showDocWarning = function(href) {
         if(jQuery.options.modalDisplayBG) {
@@ -219,7 +223,7 @@
             $('.modalBG').fadeIn("slow");
         }
 
-        $('body').append('<div class="modal-dialog">'+jQuery.options.fileWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="$.fn.exLink.closeModal();">'+jQuery.options.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="$.fn.exLink.navigateLocation(&quot;'+href+'&quot;);">'+jQuery.options.dialogConfirmButton+'</div></div>');
+        $('body').append('<div class="modal-dialog">'+jQuery.options.fileWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="exLink.closeModal();">'+jQuery.options.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="exLink.navigate(&quot;'+href+'&quot;);">'+jQuery.options.dialogConfirmButton+'</div></div>');
         $('.modal-dialog').fadeIn("slow");
 
         $('.exLinkCancel').css("background-color",jQuery.options.dialogCancel);
@@ -231,13 +235,13 @@
         $('.modal-dialog').css('height', jQuery.options.modalHeight);
     };
 
-    $.fn.exLink.closeModal = function() {
+    closeModal = function() {
 
         $('.modalBG').remove();
         $('.modal-dialog').remove();
     };
 
-    $.fn.exLink.navigateLocation = function(href) {
+    navigateLocation = function(href) {
 
         if(jQuery.options.gaTracking) {
 
@@ -250,10 +254,25 @@
             }
         }
 
-        window.open(href, '_blank');
+        if(jQuery.options.newWindow) {
+            window.open(href, jQuery.options.titleWindow, 'height='+jQuery.options.heightWindow+', width='+jQuery.options.widthWindow);
+        } else {
+            window.open(href, '_blank');
+        }
 
         $('.modalBG').remove();
         $('.modal-dialog').remove();  
     };      
  
-})( jQuery );
+    //Public stuffs
+    //These are the functions that are public facing.
+    //Anything not mapped here will not be accessible form console or the browser.
+    return {
+        init: initialize,
+        closeModal: closeModal,
+        navigate: navigateLocation
+    };
+
+
+})();
+
