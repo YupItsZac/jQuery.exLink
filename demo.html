@@ -1,0 +1,64 @@
+<html>
+<head>
+
+<title>jQuery exLink Demo</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="jquery.exLink.js"></script>
+
+</head>
+
+
+	<body>
+
+
+		<a href="http://www.google.com">External - Google</a>
+		<br><br>
+		<a href="/internal/link">Internal - Not real</a>
+		<br><br>
+		<a href="http://document.org/test.pdf">External - PDF</a>
+		<br><br>
+		<a href="/document/test.pdf">Internal - PDF</a>
+
+
+
+<script type="text/javascript">
+
+	exLink.init({
+	 	protocols: ['http', 'https'],
+		filetypes: ['pdf', 'xls', 'docx', 'doc', 'ppt', 'pptx'],
+		linkWarning: true,
+		hostCompare: false,
+		noFollow: false,
+		fancyBoxIgnore: true,
+		linkCallback: null,
+	    fileCallback: null,
+	    gaTracking: false,
+	    gaTrackLabel: 'External Links',
+	    gaTrackOld: false,
+		linkWarningBody: 'You are about to leave this website and navigate to the link below. Would you like to continue?',
+		fileWarning: true,
+		fileWarningBody: 'You are about to open the file below. Do you wish to continue?',
+		dialogConfirm: '#006600',
+		dialogCancel: '#CC0000',
+		dialogConfirmText: '#fff',
+		dialogCancelText: '#fff',
+		dialogCancelButton: 'Cancel',
+		dialogConfirmButton: 'Continue',
+		modalWidth: "320px",
+		modalHeight: "240px",
+		modalDisplayBG: true,
+		externalColor: '',
+	    documentColor: '',
+	    clickedColor: '',
+	    newWindow: false,
+	    widthWindow: '500',
+	    heightWindow: '400',
+	    titleWindow: 'exLink by YupItsZac.com'
+	});
+
+</script>
+
+	</body>
+
+</html>

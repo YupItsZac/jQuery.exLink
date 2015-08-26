@@ -7,9 +7,9 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
-**Current Version:** 2.1.0
+**Current Version:** 2.2.0
 
-**Release Date:** June 30, 2015
+**Release Date:** August 26, 2015
 
 
 Usage
@@ -46,7 +46,7 @@ sudo npm install exlink
 
 ```javascript
 
-exLink();
+exLink.init();
 
 ```
 

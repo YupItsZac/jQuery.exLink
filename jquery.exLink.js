@@ -9,7 +9,8 @@
 
 
 var exLink = (function() {
-
+ 
+    var opts = {};    
 
     initialize = function(options) {
 
@@ -48,7 +49,7 @@ var exLink = (function() {
 
 
         if(options != 're') {
-           jQuery.options = $.extend({}, defaults, options);
+           opts = $.extend({}, defaults, options);
 
            $('body').on('click','.exLink, .docuLink',function(event){
                 event.preventDefault();
@@ -63,30 +64,30 @@ var exLink = (function() {
 
         var self = this;
 
-        if(jQuery.options.hostCompare) {
+        if(opts.hostCompare) {
             targetByHost();
         } else {
             targetByProtocol();
         }
 
-        $('.exLink').css('color', jQuery.options.externalColor);
-        $('.docuLink').css('color', jQuery.options.documentColor);
- 
+        $('.exLink').css('color', opts.externalColor);
+        $('.docuLink').css('color', opts.documentColor);
+
     };
 
     targetByProtocol = function() {
 
         var self = this;
 
-        jQuery.each(jQuery.options.protocols, function(key, value) {
-            if(jQuery.options.noFollow) {
-                if(jQuery.options.fancyBoxIgnore) {
+        jQuery.each(opts.protocols, function(key, value) {
+            if(opts.noFollow) {
+                if(opts.fancyBoxIgnore) {
                     $('a[href^="'+value+'://"]').not('.docuLink, .iframe').addClass("exLink").attr('rel', 'nofollow');
                 } else {
                     $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink").attr('rel', 'nofollow');
                 }
             } else {
-                if(jQuery.options.fancyBoxIgnore) {
+                if(opts.fancyBoxIgnore) {
                     $('a[href^="'+value+'://"]').not('.docuLink, .iframe').addClass("exLink");
                 } else {
                     $('a[href^="'+value+'://"]').not('.docuLink').addClass("exLink");
@@ -109,14 +110,14 @@ var exLink = (function() {
         $('a').each(function() {
 
             if(hostname.test($(this).attr('href')) === false) {
-                if(jQuery.options.noFollow) {
-                    if(jQuery.options.fancyBoxignore) {
+                if(opts.noFollow) {
+                    if(opts.fancyBoxignore) {
                         $(this).not('.docuLink, .iframe').addClass('exLink').attr('rel', 'nofollow');
                     } else {
                         $(this).not('.docuLink').addClass('exLink').attr('rel', 'nofollow');
                     }
                 } else {
-                    if(jQuery.options.fancyBoxIgnore) {
+                    if(opts.fancyBoxIgnore) {
                         $(this).not('.docuLink, .iframe').addClass('exLink');
                     } else {
                         $(this).not('.docuLink').addClass('exLink');
@@ -128,15 +129,15 @@ var exLink = (function() {
 
     identifyDocuments = function() {
 
-        jQuery.each(jQuery.options.filetypes, function(key, value) {
-            $('a[href$="'+value+'"]').not('.exLink').addClass('docuLink').css('color', jQuery.options.documentColor);
+        jQuery.each(opts.filetypes, function(key, value) {
+            $('a[href$="'+value+'"]').not('.exLink').addClass('docuLink').css('color', opts.documentColor);
         });
     };
 
     catchClick = function(obj) {
 
         if($(obj.target).is('.exLink')) {
-            if(jQuery.options.linkWarning) {
+            if(opts.linkWarning) {
 
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
@@ -145,8 +146,8 @@ var exLink = (function() {
                 }
 
                 showLinkWarning(href);
-                if ($.isFunction(jQuery.options.linkCallback)) {
-                    jQuery.options.linkCallback(obj, true);
+                if ($.isFunction(opts.linkCallback)) {
+                    opts.linkCallback(obj, true);
                 }
             } else {
                 if($(obj.target).is('a')) {
@@ -156,13 +157,13 @@ var exLink = (function() {
                 }
 
                 window.open(href, '_blank');
-                if ($.isFunction(jQuery.options.linkCallback)) {
-                    jQuery.options.linkCallback(obj, false);
+                if ($.isFunction(opts.linkCallback)) {
+                    opts.linkCallback(obj, false);
                 }
                 
             }
         } else {
-            if(jQuery.options.fileWarning) {
+            if(opts.fileWarning) {
 
                 if($(obj.target).is('a')) {
                     var href = obj.target.href;
@@ -172,8 +173,8 @@ var exLink = (function() {
 
                 showDocWarning(href);
                 
-                if($.isFunction(jQuery.options.fileCallback)) {
-                    jQuery.options.fileCallback(obj, true);
+                if($.isFunction(opts.fileCallback)) {
+                    opts.fileCallback(obj, true);
                 }
 
             } else {
@@ -184,14 +185,14 @@ var exLink = (function() {
                 }
                 window.open(href, '_blank');
 
-                if($.isFunction(jQuery.options.fileCallback)) {
-                    jQuery.options.fileCallback(obj, false);
+                if($.isFunction(opts.fileCallback)) {
+                    opts.fileCallback(obj, false);
                 }
             }
         }
    
-        if(jQuery.options.clickedColor) {
-            $(obj.target).css('color', jQuery.options.clickedColor);
+        if(opts.clickedColor) {
+            $(obj.target).css('color', opts.clickedColor);
         }
 
         window.lastObj = obj;
@@ -200,39 +201,39 @@ var exLink = (function() {
 
     showLinkWarning = function(href) {
 
-        if(jQuery.options.modalDisplayBG) {
+        if(opts.modalDisplayBG) {
             $('body').append('<div class="modalBG"></div>');
             $('.modalBG').fadeIn("slow");
         }
 
-        $('body').append('<div class="modal-dialog">'+jQuery.options.linkWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="exLink.closeModal();">'+jQuery.options.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="exLink.navigate(&quot;'+href+'&quot;);">'+jQuery.options.dialogConfirmButton+'</div></div>');
+        $('body').append('<div class="modal-dialog">'+opts.linkWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="exLink.closeModal();">'+opts.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="exLink.navigate(&quot;'+href+'&quot;);">'+opts.dialogConfirmButton+'</div></div>');
         $('.modal-dialog').fadeIn("slow");
 
-        $('.exLinkCancel').css("background-color",jQuery.options.dialogCancel);
-        $('.exLinkContinue').css('background-color', jQuery.options.dialogConfirm);
-        $('.exLinkCancel').css('color', jQuery.options.dialogCancelText);
-        $('.exLinkContinue').css('color', jQuery.options.dialogConfirmText);
+        $('.exLinkCancel').css("background-color",opts.dialogCancel);
+        $('.exLinkContinue').css('background-color', opts.dialogConfirm);
+        $('.exLinkCancel').css('color', opts.dialogCancelText);
+        $('.exLinkContinue').css('color', opts.dialogConfirmText);
 
-        $('.modal-dialog').css('width', jQuery.options.modalWidth);
-        $('.modal-dialog').css('height', jQuery.options.modalHeight);
+        $('.modal-dialog').css('width', opts.modalWidth);
+        $('.modal-dialog').css('height', opts.modalHeight);
     };
 
     showDocWarning = function(href) {
-        if(jQuery.options.modalDisplayBG) {
+        if(opts.modalDisplayBG) {
             $('body').append('<div class="modalBG"></div>');
             $('.modalBG').fadeIn("slow");
         }
 
-        $('body').append('<div class="modal-dialog">'+jQuery.options.fileWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="exLink.closeModal();">'+jQuery.options.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="exLink.navigate(&quot;'+href+'&quot;);">'+jQuery.options.dialogConfirmButton+'</div></div>');
+        $('body').append('<div class="modal-dialog">'+opts.fileWarningBody+'<br><br><p><center><b>'+href+'</b></center></p><br><br><div class="exLinkButton exLinkCancel" onclick="exLink.closeModal();">'+opts.dialogCancelButton+'</div><div class="exLinkButton exLinkContinue" onclick="exLink.navigate(&quot;'+href+'&quot;);">'+opts.dialogConfirmButton+'</div></div>');
         $('.modal-dialog').fadeIn("slow");
 
-        $('.exLinkCancel').css("background-color",jQuery.options.dialogCancel);
-        $('.exLinkContinue').css('background-color', jQuery.options.dialogConfirm);
-        $('.exLinkCancel').css('color', jQuery.options.dialogCancelText);
-        $('.exLinkContinue').css('color', jQuery.options.dialogConfirmText);
+        $('.exLinkCancel').css("background-color",opts.dialogCancel);
+        $('.exLinkContinue').css('background-color', opts.dialogConfirm);
+        $('.exLinkCancel').css('color', opts.dialogCancelText);
+        $('.exLinkContinue').css('color', opts.dialogConfirmText);
 
-        $('.modal-dialog').css('width', jQuery.options.modalWidth);
-        $('.modal-dialog').css('height', jQuery.options.modalHeight);
+        $('.modal-dialog').css('width', opts.modalWidth);
+        $('.modal-dialog').css('height', opts.modalHeight);
     };
 
     closeModal = function() {
@@ -243,19 +244,19 @@ var exLink = (function() {
 
     navigateLocation = function(href) {
 
-        if(jQuery.options.gaTracking) {
+        if(opts.gaTracking) {
 
             var hname = window.location.hostname;
 
-            if(jQuery.options.gaTrackOld) {
-                var track = _gaq.push(['_trackEvent', jQuery.options.gaTrackLabel, hname, href]);
+            if(opts.gaTrackOld) {
+                var track = _gaq.push(['_trackEvent', opts.gaTrackLabel, hname, href]);
             } else {
-                ga('send', 'event', jQuery.options.gaTrackLabel, hname, href);
+                ga('send', 'event', opts.gaTrackLabel, hname, href);
             }
         }
 
-        if(jQuery.options.newWindow) {
-            window.open(href, jQuery.options.titleWindow, 'height='+jQuery.options.heightWindow+', width='+jQuery.options.widthWindow);
+        if(opts.newWindow) {
+            window.open(href, opts.titleWindow, 'height='+opts.heightWindow+', width='+opts.widthWindow);
         } else {
             window.open(href, '_blank');
         }
