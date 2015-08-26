@@ -7,7 +7,7 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
-**Current Version:** 2.2.0
+**Current Version:** 2.2.1
 
 **Release Date:** August 26, 2015
 
@@ -62,7 +62,7 @@ If you'd like to customize the plugin (which most people do), then you'll need t
 
 ```javascript
 
-$.fn.exLink({
+exLink.init({
  	protocols: ['http', 'https'],
 	filetypes: ['pdf', 'xls', 'docx', 'doc', 'ppt', 'pptx'],
 	linkWarning: true,
