@@ -4,7 +4,7 @@
 // Web: http://www.yupitszac.com
 // Demo: http://www.yupitszac.com/demo/jquery-exlink
 // Support: @YupItsZac - Twitter, or fb.me/yupitszac
-// Version 2.2.0 November 20, 2015
+// Version 2.3.0 November 20, 2015
 
 
 
@@ -20,8 +20,8 @@ var exLink = (function() {
             hostCompare: false,
             noFollow: false,
             fancyBoxIgnore: true,
-            linkCallback: null,
-            fileCallback: null,
+            navigateCallback: null,
+            navigateState: null,
             gaTracking: false,
             gaTrackLabel: 'External Links',
             gaTrackOld: false,
@@ -146,8 +146,8 @@ var exLink = (function() {
                 }
 
                 showLinkWarning(href);
-                if ($.isFunction(opts.linkCallback)) {
-                    opts.linkCallback(obj, true);
+                if ($.isFunction(opts.navigateCallback)) {
+                    opts.navigateCallback(obj, 1, true);
                 }
             } else {
                 if($(obj.target).is('a')) {
@@ -157,8 +157,8 @@ var exLink = (function() {
                 }
 
                 window.open(href, '_blank');
-                if ($.isFunction(opts.linkCallback)) {
-                    opts.linkCallback(obj, false);
+                if ($.isFunction(opts.navigateCallback)) {
+                    opts.navigateCallback(obj, 1, false);
                 }
                 
             }
@@ -173,8 +173,8 @@ var exLink = (function() {
 
                 showDocWarning(href);
                 
-                if($.isFunction(opts.fileCallback)) {
-                    opts.fileCallback(obj, true);
+                if($.isFunction(opts.navigateCallback)) {
+                    opts.navigateCallback(obj, 1, true);
                 }
 
             } else {
@@ -185,8 +185,8 @@ var exLink = (function() {
                 }
                 window.open(href, '_blank');
 
-                if($.isFunction(opts.fileCallback)) {
-                    opts.fileCallback(obj, false);
+                if($.isFunction(opts.navigateCallback)) {
+                    opts.navigateCallback(obj, 2, false);
                 }
             }
         }
@@ -257,8 +257,14 @@ var exLink = (function() {
 
         if(opts.newWindow) {
             window.open(href, opts.titleWindow, 'height='+opts.heightWindow+', width='+opts.widthWindow);
+            if($.isFunction(opts.navigateState)) {
+                opts.navigateState(href, 1);
+            }
         } else {
             window.open(href, '_blank');
+            if($.isFunction(opts.navigateState)) {
+                opts.navigateState(href, 2);
+            }
         }
 
         $('.modalBG, .modal-dialog').remove();  

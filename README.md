@@ -7,9 +7,9 @@ This plugin is distributed as is, and does not include any official support. How
 
 Also, if you'd like to contribute to the plugin, that's cool too. Just fork and start creating!
 
-**Current Version:** 2.2.1
+**Current Version:** 2.3.0
 
-**Release Date:** August 26, 2015
+**Release Date:** November 20, 2015
 
 
 Usage
@@ -106,19 +106,19 @@ Options
 
 **filetypes** - Specify a an array of document formats you want to catch. Similar to protocols, but matching the extension of the document linked. Ex: filetypes: ['doc', 'pdf', 'xlx', 'docx', 'ppt'] NOTE: Do not include the leading dot
 
-**linkWarning** - Display a warning notifying the user that they are navigating to an external link. By default, this is enabled. Ex: linkWarning: true
+**navigateCallback** - New in version 2.3.0, if set, this exLink will make the callback to the desired function with the element clicked, if the link was a file (1) or external website (2), and if a warning dialog was displayed (true) or not (false). 
 
-**fileWarning** - Similar to linkWarning, this notifies the user that they are opening a document and asks for confirmation ot proceed. By default, this is also enabled. Ex: fileWarning: true
+**navigateState** - New in version 2.3.0, this options enables a callback for each link opened by exLink. Included in the callback is the link clicked and if the link was opened in a new window (1) or a new tab (2).
+
+**linkWarning** - Removed in version 2.3.0: Display a warning notifying the user that they are navigating to an external link. By default, this is enabled. (Replaced by warningCallback) Ex: linkWarning: true
+
+**fileWarning** - Removed in version 2.3.0: Similar to linkWarning, this notifies the user that they are opening a document and asks for confirmation ot proceed. By default, this is also enabled. Replaced by warningCallback) Ex: fileWarning: true
 
 **hostCompare** - New in version 1.2.0, set this as true to identify external links based on a hostname comparison. If false, which is the default case, exLink will identify the external links based on protocol information. By default, this is disabled. Ex: hostCompare: true
  
 **noFollow** - New in version 1.2.5, set this to true to prevent search engines from following the identified external URLs. If false, search engines will recurse as expected thorugh the external links. By default, this is false. Ex: noFollow: false
 
 **fancyBoxIgnore** - New in version 1.2.6, this enables pages to still use the popular Fancy Box plugin to open content in modal dialogs without opening in a new tab as well. Set this to true if you use the fancyBox plugin, and to false if you do not. Set to true by default. Ex: fancyBoxIgnore: true
-
-**linkCallback** - Added in version 1.2.7, this enables developers to execute a function each time an external link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. Ex: linkCallback: callback
-
-**fileCallback** - New in version 1.2.7, this enables developers to execute a function each time a document link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. Ex: fileCallback: docCallback
 
 **gaTracking** - Introduced in version 2.0.2, this option enables a Google Analytics event to trigger when any of the links are clicked. Classic and Universeral analytics supported. This is a boolean value set to false by default. Ex: gaTracking: false
 
@@ -133,6 +133,12 @@ Options
 **heightWindow** - The height of the window specified via the newWindow option. String value. Ex: heightWindow: '400'
 
 *titleWindow** - The title of the window specified via the newWindow option. String value. Ex: titleWindow: 'My Window Title'
+
+######Deprecated Options
+
+**linkCallback** - Removed in version 2.3.0: Added in version 1.2.7, this enables developers to execute a function each time an external link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: linkCallback: callback
+
+**fileCallback** - Removed in version 2.3.0: New in version 1.2.7, this enables developers to execute a function each time a document link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: fileCallback: docCallback
 
 ######Visual Options
 
