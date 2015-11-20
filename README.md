@@ -134,12 +134,6 @@ Options
 
 *titleWindow** - The title of the window specified via the newWindow option. String value. Ex: titleWindow: 'My Window Title'
 
-######Deprecated Options
-
-**linkCallback** - Removed in version 2.3.0: Added in version 1.2.7, this enables developers to execute a function each time an external link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: linkCallback: callback
-
-**fileCallback** - Removed in version 2.3.0: New in version 1.2.7, this enables developers to execute a function each time a document link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: fileCallback: docCallback
-
 ######Visual Options
 
 **linkWarningBody** - This is a string containing the message you would like to display to users when they click an external link. linkWarning must be set to true for this to work. Al HTML markup is accepted.
@@ -170,12 +164,17 @@ Options
 
 **clickedColor** - New in version 1.2.8, this option lets you change the color of all external and document links that have been clicked. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
 
+######Deprecated Options
+
+**linkCallback** - Removed in version 2.3.0: Added in version 1.2.7, this enables developers to execute a function each time an external link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: linkCallback: callback
+
+**fileCallback** - Removed in version 2.3.0: New in version 1.2.7, this enables developers to execute a function each time a document link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: fileCallback: docCallback
+
 exLink Demo & Other Stuffs
 ==
 
 jQuery.exLink has had more downloads than I expected, which is pretty cool! Almost 800 right now. I've put together a basic demo (which I probably should've done from the beginning) and published it on my website. Also, exLink has been featured or shared to some other websites, and I feel like I should say thanks.
 
-- [jQuery.exLink Demo](http://www.yupitszac.com/demo/jquery-exlink)
 - [exLink on npm](http://www.npmjs.com/package/exlink)
 - [exLink on jQuer.in](http://www.jquer.in/helpful-jquery-plugins-for-html5-websites/exlink/)
 - [exLink on Github](http://www.github.com/YupItsZac/jQuery.exLink) / Just in case you aren't reading this on Github
@@ -227,7 +226,7 @@ Notes & Hints
 
 5). The introduction of the noFollow option is geared towards sites that aren't heavily reliant upon SEO. It is not reccommended you use this option unless the external websites you're linking to do not provide any value for your content (this is very rare).
 
-6). If you choose to use the linkCallback or fileCallback options, your callback function may look something like this:
+6). Prior to version 2.3.0, if you choose to use the linkCallback or fileCallback options, your callback function may look something like this:
 
 ```javascript
 
@@ -236,6 +235,36 @@ Notes & Hints
   	console.log('The object clicked: '+obj);
   	console.log('Warning displayed: '+warning);
   }
+```
+
+7). After version 2.3.0, if you choose to use the navigateCallback option, your callback might look something like this:
+
+```javascript
+
+ //obj is the object clicked
+ //type is the type of link clicked: 1 = file, 2 = external website
+ //warn indicates if a warning dialog was displayed - true/false
+
+ function callback(obj, type, warn) {
+ 	console.log('Object: '.obj);
+ 	console.log('Link Type: '.type);
+ 	console.log('Warning: '.warn);
+ }
+
+```
+
+7). After version 2.3.0, if you choose to use the navigateState option, your callback might look something like this:
+
+```javascript
+
+ //href is the link opened
+ //type is the type of link: 1 = file, 2 = external website
+
+ function callback(obj, type, warn) {
+ 	console.log('Link Href: '.href);
+ 	console.log('Link Type: '.type);
+ }
+
 ```
 
 
