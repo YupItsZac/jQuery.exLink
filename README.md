@@ -110,9 +110,9 @@ Options
 
 **navigateState** - New in version 2.3.0, this options enables a callback for each link opened by exLink. Included in the callback is the link clicked and if the link was opened in a new window (1) or a new tab (2).
 
-**linkWarning** - Removed in version 2.3.0: Display a warning notifying the user that they are navigating to an external link. By default, this is enabled. (Replaced by warningCallback) Ex: linkWarning: true
+**linkWarning** - Removed in version 2.3.0: Display a warning notifying the user that they are navigating to an external link. By default, this is enabled. Ex: linkWarning: true
 
-**fileWarning** - Removed in version 2.3.0: Similar to linkWarning, this notifies the user that they are opening a document and asks for confirmation ot proceed. By default, this is also enabled. Replaced by warningCallback) Ex: fileWarning: true
+**fileWarning** - Removed in version 2.3.0: Similar to linkWarning, this notifies the user that they are opening a document and asks for confirmation ot proceed. By default, this is also enabled. Ex: fileWarning: true
 
 **hostCompare** - New in version 1.2.0, set this as true to identify external links based on a hostname comparison. If false, which is the default case, exLink will identify the external links based on protocol information. By default, this is disabled. Ex: hostCompare: true
  
