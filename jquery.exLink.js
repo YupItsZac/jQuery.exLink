@@ -48,19 +48,17 @@ var exLink = (function() {
         }
 
 
-        if(options != 're') {
-           opts = $.extend({}, defaults, options);
+       opts = $.extend({}, defaults, options);
 
-           $('body').on('click','.exLink, .docuLink',function(event){
-                event.preventDefault();
+       $('body').on('click','.exLink, .docuLink',function(event){
+            event.preventDefault();
 
-                if(event.handled != true) {
-                    catchClick(event);
-                }
+            if(event.handled != true) {
+                catchClick(event);
+            }
 
-                event.handled = true;
-            });
-        }   
+            event.handled = true;
+        });  
 
         var self = this;
 

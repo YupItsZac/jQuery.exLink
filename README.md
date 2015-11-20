@@ -164,11 +164,13 @@ Options
 
 **clickedColor** - New in version 1.2.8, this option lets you change the color of all external and document links that have been clicked. If left blank, this defaults to the colors defined in the stylesheet or by the browser. This is a hex code left blank by default. Ex: externalColor: #0645AD
 
-######Deprecated Options
+######Deprecated Options & Methods
 
 **linkCallback** - Removed in version 2.3.0: Added in version 1.2.7, this enables developers to execute a function each time an external link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: linkCallback: callback
 
 **fileCallback** - Removed in version 2.3.0: New in version 1.2.7, this enables developers to execute a function each time a document link has been clicked. This returns the object clicked, and an indication if a warning dialog was displayed or not. This is null by default. (Replaced by navigateCallback) Ex: fileCallback: docCallback
+
+**exLink.init('re')** - Removed in version 2.3.0: The need to re-initialize exLink after new content has been added via AJAX is no longer necessary. exLink automatically detects these changes.
 
 exLink Demo & Other Stuffs
 ==
@@ -208,7 +210,7 @@ Notes & Hints
 
 ```
 
-3). If you are loading content via AJAX or will be adding any content after exLink has been initialized, you'll need to reinitialize the plugin. If you specify the string 're' as your options, then the options will not be affected and all external links/documents will be redetected to account for your new additions. 
+3). DEPRECATED 2.3.0: If you are loading content via AJAX or will be adding any content after exLink has been initialized, you'll need to reinitialize the plugin. If you specify the string 're' as your options, then the options will not be affected and all external links/documents will be redetected to account for your new additions. 
 
 ```javascript
 
